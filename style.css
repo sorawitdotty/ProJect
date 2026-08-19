@@ -1,11 +1,17 @@
 /* ===================== Color Palette ===================== */
 :root {
-    --navy: #0F172A;          /* สีกรมเข้ม */
-    --navy-light: #1E293B;
+    --navy: #0F172A;          /* สีกรมเข้ม (หลัก) */
+    --navy-light: #1E293B;    /* สีกรมท่ากลาง */
+    --slate: #475569;         /* สีเทาเข้ม/เทาหินชนวน */
+    --slate-light: #94A3B8;   /* สีเทาอ่อน */
+    --light-gray: #F8FAFC;    /* สีพื้นหลังเทาอ่อนสว่าง */
+    --medium-gray: #64748B;   /* สีเทาตัวหนังสือทั่วไป */
     --white: #ffffff;
-    --light-gray: #F5F7FA;
-    --medium-gray: #6B7280;
-    --green: #22C55E;         /* สีเขียวเด่น */
+    
+    /* สีเน้น (Accent Colors) ปรับจากสีเขียวเป็นโทนฟ้า/น้ำเงินสว่าง */
+    --accent: #2563EB;        /* สีน้ำเงินสว่างเด่น (แทนที่สีเขียวเดิม) */
+    --accent-hover: #1D4ED8;  /* สีน้ำเงินสว่างตอน Hover */
+    --accent-glow: rgba(37, 99, 235, 0.4);
 }
 
 /* ===================== Base ===================== */
@@ -57,7 +63,7 @@ h1,h2,h3,h4,h5,h6 {
 }
 .logo .brand-sub {
     font-size: 0.75rem;
-    color: var(--green);
+    color: var(--slate-light);
     letter-spacing: 1px;
     font-weight: 500;
 }
@@ -74,23 +80,23 @@ h1,h2,h3,h4,h5,h6 {
     transition: 0.3s;
 }
 .nav-links a:hover {
-    color: var(--green);
+    color: var(--slate-light);
 }
 .btn-nav {
-    background: var(--green);
+    background: var(--accent);
     color: var(--white);
     padding: 10px 22px;
     border-radius: 50px;
     font-weight: 600;
 }
 .btn-nav:hover {
-    background: #1eb054;
+    background: var(--accent-hover);
 }
 
 /* ===================== Hero ===================== */
 .hero {
     height: 85vh;
-    background: linear-gradient(rgba(15,23,42,0.8), rgba(15,23,42,0.8)),
+    background: linear-gradient(rgba(15,23,42,0.85), rgba(15,23,42,0.85)),
         url('work2.jpg');
     background-size: cover;
     background-position: center;
@@ -107,7 +113,7 @@ h1,h2,h3,h4,h5,h6 {
     line-height: 1.2;
 }
 .hero h1 span {
-    color: var(--green);
+    color: var(--slate-light);
 }
 .hero p {
     font-size: 1.15rem;
@@ -130,11 +136,11 @@ h1,h2,h3,h4,h5,h6 {
     transition: 0.3s;
 }
 .btn-primary {
-    background: var(--green);
+    background: var(--accent);
     color: var(--white);
 }
 .btn-primary:hover {
-    background: #1eb054;
+    background: var(--accent-hover);
     transform: translateY(-3px);
 }
 .btn-line {
@@ -159,7 +165,7 @@ h1,h2,h3,h4,h5,h6 {
     content: '';
     width: 60px;
     height: 4px;
-    background: var(--green);
+    background: var(--accent);
     position: absolute;
     bottom: -10px;
     left: 50%;
@@ -182,18 +188,19 @@ h1,h2,h3,h4,h5,h6 {
     box-shadow: 20px 20px 0 var(--light-gray);
 }
 .section-tag {
-    color: var(--green);
+    color: var(--accent);
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 2px;
     font-size: 0.9rem;
 }
 .highlight-p {
-    border-left: 4px solid var(--green);
+    border-left: 4px solid var(--accent);
     padding-left: 20px;
     margin: 25px 0;
     font-weight: 500;
     font-size: 1.1rem;
+    color: var(--slate);
 }
 .target-sectors span {
     display: inline-flex;
@@ -204,7 +211,7 @@ h1,h2,h3,h4,h5,h6 {
     color: var(--navy);
 }
 .target-sectors i {
-    color: var(--green);
+    color: var(--accent);
 }
 
 /* ===================== Services ===================== */
@@ -226,11 +233,12 @@ h1,h2,h3,h4,h5,h6 {
 }
 .service-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+    box-shadow: 0 20px 40px rgba(15,23,42,0.08);
+    border-top-color: var(--accent);
 }
 .service-card i {
     font-size: 3rem;
-    color: var(--green);
+    color: var(--accent);
     margin-bottom: 25px;
 }
 
@@ -249,7 +257,7 @@ h1,h2,h3,h4,h5,h6 {
     background: var(--white);
     padding: 30px 20px;
     border-radius: 12px;
-    border: 1px solid #eee;
+    border: 1px solid #e2e8f0;
 }
 .step-num {
     width: 50px;
@@ -283,7 +291,7 @@ h1,h2,h3,h4,h5,h6 {
     margin-top: 30px;
 }
 .benefit-item i {
-    color: var(--green);
+    color: var(--accent);
     font-size: 1.3rem;
     margin-right: 12px;
 }
@@ -354,8 +362,14 @@ h1,h2,h3,h4,h5,h6 {
     padding: 15px;
     margin-bottom: 15px;
     border-radius: 8px;
-    border: none;
+    border: 1px solid var(--navy-light);
+    background: var(--navy-light);
+    color: white;
     font-family: 'Kanit';
+}
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: var(--slate-light);
 }
 
 /* ===================== Floating LINE Button ===================== */
@@ -363,7 +377,7 @@ h1,h2,h3,h4,h5,h6 {
     position: fixed;
     bottom: 25px;
     right: 25px;
-    background: var(--green);
+    background: var(--accent);
     color: white;
     padding: 12px 25px;
     border-radius: 50px;
@@ -374,7 +388,12 @@ h1,h2,h3,h4,h5,h6 {
     z-index: 999;
     font-weight: 600;
     font-size: 1rem;
-    box-shadow: 0 10px 20px rgba(34,197,94,0.4);
+    box-shadow: 0 10px 20px var(--accent-glow);
+    transition: 0.3s;
+}
+.floating-line:hover {
+    background: var(--accent-hover);
+    transform: translateY(-3px);
 }
 .floating-line i {
     font-size: 1.5rem;
