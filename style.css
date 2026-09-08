@@ -55,17 +55,13 @@ h1,h2,h3,h4,h5,h6 {
     align-items: center;
     width: 100%;
 }
-.logo .brand-main {
-    font-weight: 700;
-    font-size: 1.3rem;
-    color: var(--white);
+.brand-logo {
     display: block;
-}
-.logo .brand-sub {
-    font-size: 0.75rem;
-    color: var(--slate-light);
-    letter-spacing: 1px;
-    font-weight: 500;
+    width: 200px;
+    height: 100px;
+    object-fit: contain;
+    border-radius: 6px;
+    padding: 5px 9px;
 }
 .nav-links {
     display: flex;
@@ -371,6 +367,24 @@ h1,h2,h3,h4,h5,h6 {
 .contact-form textarea::placeholder {
     color: var(--slate-light);
 }
+.contact-details a {
+    color: var(--navy);
+    text-decoration: none;
+}
+.contact-details a:hover {
+    color: var(--accent);
+    text-decoration: underline;
+}
+.contact-line-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin: 18px 0 12px;
+    color: var(--accent);
+    font-weight: 600;
+    text-decoration: none;
+}
+.contact-line-link:hover { color: var(--accent-hover); }
 
 /* ===================== Floating LINE Button ===================== */
 .floating-line {
