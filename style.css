@@ -367,6 +367,18 @@ h1,h2,h3,h4,h5,h6 {
 .contact-form textarea::placeholder {
     color: var(--slate-light);
 }
+.form-status {
+    margin-top: 12px;
+    font-family: 'Kanit';
+    font-size: 0.95rem;
+    text-align: center;
+}
+.form-status.success {
+    color: #4ade80;
+}
+.form-status.error {
+    color: #f87171;
+}
 .contact-details a {
     color: var(--navy);
     text-decoration: none;

@@ -212,7 +212,7 @@
             <h2 class="section-title">เหตุผลที่องค์กรชั้นนำไว้วางใจเรา</h2>
             <div class="reasons-grid">
                 <div class="reason">
-                    <i class="fas fa-user-expert"></i>
+                    <i class="fas fa-award"></i>
                     <h4>ประสบการณ์ 20+ ปี</h4>
                     <p>ทีมวิศวกรและช่างเทคนิควิเคราะห์และแก้ไขปัญหาได้อย่างแม่นยำ</p>
                 </div>
@@ -252,12 +252,16 @@
             </div>
             <div class="contact-form">
                 <h3>ขอใบเสนอราคา / สอบถามข้อมูล</h3>
-                <form>
-                    <input type="text" placeholder="ชื่อ-นามสกุล / บริษัท" required>
-                    <input type="email" placeholder="อีเมลติดต่อ">
-                    <input type="tel" placeholder="เบอร์โทรศัพท์" required>
-                    <textarea placeholder="รายละเอียดที่ต้องการให้ดำเนินการ" rows="5"></textarea>
-                    <button type="submit" class="btn btn-primary full-btn">ส่งข้อมูลติดต่อ</button>
+                <form id="contactForm">
+                    <input type="text" name="name" placeholder="ชื่อ-นามสกุล / บริษัท" required>
+                    <input type="email" name="email" placeholder="อีเมลติดต่อ">
+                    <input type="tel" name="phone" placeholder="เบอร์โทรศัพท์" required>
+                    <textarea name="message" placeholder="รายละเอียดที่ต้องการให้ดำเนินการ" rows="5" required></textarea>
+                    <input type="hidden" name="_subject" value="มีลูกค้าติดต่อผ่านเว็บไซต์ Trinity Force">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+                    <button type="submit" class="btn btn-primary full-btn" id="contactSubmitBtn">ส่งข้อมูลติดต่อ</button>
+                    <p id="contactFormStatus" class="form-status"></p>
                 </form>
             </div>
         </div>
@@ -268,6 +272,46 @@
             <p>&copy; 2023 Trinity Force Service And Solution Co., LTD. All Rights Reserved.</p>
         </div>
     </footer>
+
+    <!-- Contact form submission (sends to email via FormSubmit, no backend needed) -->
+    <script>
+        const contactForm = document.getElementById('contactForm');
+        const contactSubmitBtn = document.getElementById('contactSubmitBtn');
+        const contactFormStatus = document.getElementById('contactFormStatus');
+
+        contactForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            contactSubmitBtn.disabled = true;
+            contactSubmitBtn.textContent = 'กำลังส่ง...';
+            contactFormStatus.textContent = '';
+            contactFormStatus.className = 'form-status';
+
+            const formData = new FormData(contactForm);
+
+            fetch('https://formsubmit.co/ajax/trinityforceservice@gmail.com', {
+                method: 'POST',
+                headers: { 'Accept': 'application/json' },
+                body: formData
+            })
+                .then((response) => response.json())
+                .then(() => {
+                    alert('ส่งข้อมูลติดต่อเรียบร้อยแล้ว ทางเราจะติดต่อกลับโดยเร็วที่สุด');
+                    contactFormStatus.textContent = 'ส่งข้อมูลเรียบร้อยแล้ว ✅';
+                    contactFormStatus.classList.add('success');
+                    contactForm.reset();
+                })
+                .catch(() => {
+                    alert('ส่งข้อมูลไม่สำเร็จ กรุณาลองใหม่อีกครั้ง หรือติดต่อทางเบอร์โทรศัพท์');
+                    contactFormStatus.textContent = 'เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง ❌';
+                    contactFormStatus.classList.add('error');
+                })
+                .finally(() => {
+                    contactSubmitBtn.disabled = false;
+                    contactSubmitBtn.textContent = 'ส่งข้อมูลติดต่อ';
+                });
+        });
+    </script>
 
 </body>
 </html>
